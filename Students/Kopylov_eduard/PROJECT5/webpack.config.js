@@ -6,6 +6,7 @@ module.exports = {
     entry: {
         main: path.resolve (__dirname, 'src', 'index.jsx') //'./src/index.jsx
     },  
+   
     output: {
         path: path.join (__dirname, 'dist'),
         publicPath: '',

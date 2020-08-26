@@ -26,7 +26,7 @@ class Layout extends React.Component {
     render() {
         return (
             <Container>
-                    <Header chatId = {this.props.chatId}/>
+                    <Header chatId = {Number(this.props.chatId)}/>
         
                 <Grid container direction = 'row'>
                         <Grid item xs={3}>
@@ -34,7 +34,7 @@ class Layout extends React.Component {
                         </Grid>
                         
                         <Grid item xs={9}>
-                        <MessagesField usr = {this.props.usr}/>
+                        <MessagesField  usr = {this.props.usr} />
                 
                 
                         </Grid>

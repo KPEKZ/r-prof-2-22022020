@@ -23,18 +23,16 @@ class Messages extends Component {
     };
 
     //methods
-    sendMessage = (text, sender,title)=>{
-        const { messages} = this.props;
-        console.log('messages: ', messages);
-
+    sendMessage = (text, sender)=>{
+          const { messages} = this.props;
         const messageId = Object.keys(messages).length+1;
      
-        this.props.addChat(chatId,sender, text,title)
+        this.props.sendMessage(messageId, sender, text)
            
     };
     
 handleChange = (event)=>{
-    if (event.keyCode !== 13){
+   if (event.keyCode !== 13){
         console.log('pressed');
         this.setState({msg:event.target.value});
     }
@@ -48,6 +46,7 @@ handleChange = (event)=>{
 
 handleSendMessage = (message, sender) => {
     this.setState({msg: ''});
+   
     if (sender == 'Me') this.sendMessage(message, sender);
     
 };
@@ -55,10 +54,8 @@ handleSendMessage = (message, sender) => {
 //hooks
 componentDidUpdate(){
 
-    const { messages} = this.props;
-    console.log('messages: ', messages);
-    const chatsId = Object.keys(messages).length;
-    console.log('chatsId: ', chatsId);
+     const { messages} = this.props;
+    const messageId = Object.keys(messages).length+1;
 
     
     if (Object.keys(messages).length % 2 == 1)
@@ -77,14 +74,19 @@ componentDidUpdate(){
         //let user = this.props.usr;
         let user = 'Me';
         let {messages} = this.props;
-
+       
         let MessagesArray = [];
-        Object.keys(messages).forEach(key => {MessagesArray.push(
-            <Message key = { key} 
+        Object.keys(messages).forEach(key => {
+           
+            MessagesArray.push(
+            <Message 
+            key = { key} 
             sender = {messages[key].user} 
-            text ={messages[key].text}/>
+            text ={messages[key].text}
+          
+            />
 
-        )});
+        )}); 
                
         return (
             <Grid container className="wrapper">
@@ -107,13 +109,13 @@ componentDidUpdate(){
     }
 }
 
-const mapStateToPops = ({chatReducer}) => {
-    
-    return {messages: chatReducer.chats}
-}
-const mapDispatchToProps = dispatch => bindActionCreators({addChat},dispatch)
+const mapStateToProps = ({ msgReducer }) => ({
+    messages: msgReducer.messages
+})
 
-export default connect(mapStateToPops, mapDispatchToProps)(Messages)
+const mapDispatchToProps = dispatch => bindActionCreators( { sendMessage }, dispatch )
+
+export default connect(mapStateToProps, mapDispatchToProps)(Messages)
 
 
 

@@ -7,6 +7,16 @@
     width: 30%;
 }
 
+.msgRight{
+    align-self: flex-end;
+    background-color: #1b9403; /*#1c0000 - вишневый цвет*/
+    padding: 5px 15px;
+    border-radius: 7px;
+    font-size: 18px;
+    margin: 7px !important;
+    width: 30%;
+}
+
 .btn{
     padding: 7px;
     font-size: 25px;

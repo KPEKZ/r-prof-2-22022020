@@ -6,26 +6,11 @@ import connect from "react-redux/es/connect/connect";
 
 class Router extends React.Component{
     render() {
-         const {chats} = this.props;
-         //console.log('chats: ', chats);
-         let Routes = [];
-
-        Object.keys(chats).forEach(key => {
-            Routes.push(
-              <Route
-               key = {key}
-                exact
-                path={"/chat/" + key}
-                render={() => <Layout  chatId={key} />}
-              />
-            );
-          });
-          
         return (
             <Switch>
             
             <Route exact path = "/" component = { Layout}/>
-            {/* <Route exact path = "/chat/1/" render = {
+            <Route exact path = "/chat/1/" render = {
                 () => <Layout chatId = {1} />
             }/>
             <Route exact path = "/chat/2/" render = {
@@ -36,8 +21,7 @@ class Router extends React.Component{
             }/>
             <Route exact path = "/chat/4/" render = {
                 () => <Layout chatId = {4} />
-            }/> */}
-            {Routes}
+            }/>
                
                 
             </Switch>

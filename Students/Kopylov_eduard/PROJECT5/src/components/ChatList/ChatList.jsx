@@ -35,7 +35,7 @@ class ChatList extends Component {
         }
     }
 
-    handleAdd = () => {
+    handleAdd = () => { 
             if(this.state.input !== ''){
                 this.props.addChat(this.state.input)
                 this.setState({input: ''})
@@ -56,22 +56,6 @@ class ChatList extends Component {
         return (
 
                         <List className = "newChats">
-
-                        {/* <Link to = '/chat/1'>
-                        <ListItem primaryText= 'Chat1' leftIcon = {<ContentSend />} />
-                        </Link>
-                        
-                        <Link to = '/chat/2'>
-                        <ListItem primaryText= 'Chat2' leftIcon = {<ContentSend />} />
-                            </Link>
-                            
-                            <Link to = '/chat/3'>
-                            <ListItem primaryText= 'Chat3' leftIcon = {<ContentSend />} />
-                            </Link>
-
-                            <Link to = '/chat/4'>
-                            <ListItem primaryText= 'Chat4' leftIcon = {<ContentSend />} />
-                            </Link> */}
                             
                             { chatsArray }
                 <ListItem 
